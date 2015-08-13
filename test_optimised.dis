@@ -1,0 +1,27 @@
+LOAD_CONST          1
+DUP_TOP
+STORE_FAST          i
+STORE_FAST          j
+
+LOAD_CONST          2
+LOAD_FAST           i
+INPLACE_ADD
+STORE_FAST          i
+
+LOAD_FAST           i
+LOAD_CONST          0.5
+INPLACE_POWER       
+LOAD_FAST           j
+COMPARE_OP          <=
+JUMP_IF_TRUE_OR_POP 6
+
+LOAD_CONST          1
+LOAD_FAST           j
+INPLACE_ADD
+STORE_FAST          j
+
+LOAD_FAST           i
+PRINT_ITEM
+PRINT_NEWLINE
+
+JUMP_ABSOLUTE       9
