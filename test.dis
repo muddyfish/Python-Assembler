@@ -1,19 +1,6 @@
-LOAD_CONST          42
-STORE_FAST          x
-LOAD_CONST          64
-STORE_FAST          y
-SETUP_LOOP         18
-LOAD_GLOBAL         range
-LOAD_CONST          101
-CALL_FUNCTION       0,1
-GET_ITER       
-FOR_ITER           17
-STORE_FAST          i
-LOAD_FAST           x
-LOAD_FAST           y
-INPLACE_ADD    
-STORE_FAST          x
-JUMP_ABSOLUTE      10
-POP_BLOCK      
-LOAD_FAST           y
-RETURN_VALUE   
+LOAD_CONST               0
+LOAD_CONST               1
+INPLACE_ADD
+DUP_TOP
+PRINT_ITEM
+JUMP_ABSOLUTE            2

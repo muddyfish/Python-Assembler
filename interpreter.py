@@ -11,9 +11,12 @@ class Compiler():
         self.constants = [None]
         self.names = []
         self.locals = []
-        for line in self.raw:
-            print line,
+        for num, line in enumerate(self.raw):
+            if '#' in line:
+                line = line[:line.index("#")]+ "\n"
             parts = line.split(' ')
+            parts = [part.replace('%_', ' ') for part in parts]
+            print num+1, " ".join(parts),
             opcode = Compiler.reverse_opcodes[parts[0].rstrip()]
             args = parts[-1].rstrip()
             op = [opcode]
@@ -43,6 +46,8 @@ class Compiler():
                                   "pyke_code",
                                   1,
                                   "")
+        print
+        print `self.code.co_code`
         self.func = types.FunctionType(self.code, __builtins__.__dict__)
 
     def load_const(self, args): return self.load_generic(args, self.constants)
@@ -86,4 +91,5 @@ save_f = open(".".join(sys.argv[1].split(".")[:-1])+".pyc", "wb")
 save_f.write("\x03\xf3\r\n")
 save_f.write(struct.pack('I', time.time()))
 marshal.dump(c.code, save_f)
+print `marshal.dumps(c.code)`
 save_f.close()

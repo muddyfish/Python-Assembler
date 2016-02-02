@@ -1,0 +1,32 @@
+BUILD_LIST          0
+STORE_NAME          primes
+LOAD_CONST          2
+STORE_NAME          i
+
+LOAD_NAME           primes
+GET_ITER
+FOR_ITER            17
+LOAD_NAME           i
+ROT_TWO
+BINARY_MODULO
+LOAD_CONST          0
+COMPARE_OP          ==
+POP_JUMP_IF_FALSE   8
+JUMP_ABSOLUTE       27
+
+LOAD_NAME           primes
+LOAD_NAME           i
+BUILD_LIST          1
+INPLACE_ADD
+STORE_NAME          primes
+
+LOAD_NAME           i
+PRINT_ITEM
+PRINT_NEWLINE
+
+LOAD_NAME           i
+LOAD_CONST          1
+INPLACE_ADD
+STORE_NAME          i
+
+JUMP_ABSOLUTE       6
